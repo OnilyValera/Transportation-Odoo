@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Vista formulario vehiculo -->
+    <record id="vehicle_view_form" model="ir.ui.view">
+        <field name="name">vehicle.view.form</field>
+        <field name="model">vehicle</field>
+        <field name="arch" type="xml">
+            <form string="Vehiculo"  create="false">
+                <header>
+                    <button name="button_disponible" type="object" string="Disponible" states="disponible" class="oe_highlight"/>
+                    <button name="button_reservado" type="object" string="Reservar" states="reservar"/>
+                    <!-- <button name="action_approve" string="Approve" type="object" attrs="{'invisible':[('user_status','!=','pending')]}" data-hotkey="q"/>
+                    <button name="action_refuse" string="Refuse" type="object" attrs="{'invisible':[('user_status','!=','pending')]}" data-hotkey="x"/> -->
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="brand"></field>
+                        <field name="car_model"></field>
+                        <field name="tipo_vehiculo"></field>
+                        <field name="year"></field>
+                        <field name="plate_number"></field>
+                        <field name="image" widget="image" class="oe_avatar"></field>    
+                    </group>
+                    <!-- <notebook>
+                        <page id="details_tab" string="Detalle" name="detalle">
+                            <tree string="Vehiculo">
+                                <field name="brand"></field>
+                                <field name="car_model"></field>
+                                <field name="year"></field>
+                                <field name="plate_number"></field>
+                                <field name= "tipo_vehiculo"></field>
+                            </tree>
+                        </page>
+                    </notebook> -->
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"></field>
+                    <field name="activity_ids"></field>
+                    <field name="message_ids"></field>
+                </div>
+            </form>
+        </field>
+    </record>
+<!-- Vista tree vehiculo -->
+    <record id="vehicle_view_tree" model="ir.ui.view">
+        <field name="name">vehicle.view.tree</field>
+        <field name="model">vehicle</field>
+        <field name="arch" type="xml">
+            <tree string="Vehiculo">
+                <field name="brand"></field>
+                <field name="car_model"></field>
+                <field name="year"></field>
+                <field name="plate_number"></field>
+                <field name= "tipo_vehiculo"></field>
+                <field name="state" string="Estatus" widget="badge" decoration-info="state == 'disponible'" decoration-danger="state == 'reservado'"></field>
+            </tree>
+        </field>
+    </record>
+</odoo>

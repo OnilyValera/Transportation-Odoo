@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Vista formulario viaje-->
+    <record id="trip_view_form" model="ir.ui.view">
+        <field name="name">trip.view.form</field>
+        <field name="model">trip</field>
+        <field name="arch" type="xml">
+            <form string="Trip">
+            <header>
+                <button name="button_send" class="oe_highlight" states="draft" string="Enviar" type="object" help="Enviar solicitud"/>
+                <field name="state" widget="statusbar" statusbar_visible="draft,enviado,in_progress,aprobado,rechazado,cancel"/>
+            </header>
+                <sheet>
+                    <group>
+                        <group>         
+                            <field name="destination" icon="fa-users"></field>
+                            <field name="calle"></field>
+                            <field name="ciudad"></field>
+                            <field name="provincia"></field>
+                            <field name="pais"></field>
+                            <field name="description"></field>
+                            <field name="datetime1"></field>
+                            <field name="datetime2"></field>
+                            <field name="pickup_location"></field>
+                            <field name="department_id"></field>
+                            <field name="driver_id"></field>
+                            <field name="cantidad_pasajeros"></field>
+                        </group>                
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"></field>
+                    <field name="activity_ids"></field>
+                    <field name="message_ids"></field>
+                </div>
+            </form>
+        </field>
+    </record>
+    <!-- Vista tree Viaje -->
+    <record id="trip_view_tree" model="ir.ui.view">
+        <field name="name">trip.view.tree</field>
+        <field name="model">trip</field>
+        <field name="arch" type="xml">
+            <tree string="Trip">
+                <field name="id"></field>
+                <field name="create_date" string="Fecha de creación"></field>
+                <field name="create_uid" string="Creado por"></field>
+                <field name="destination"></field>
+                <field name="calle"></field>
+                <field name="state" string="Estatus" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'enviado'"></field>
+                <field name="ciudad"></field>
+                <field name="provincia"></field>
+                <field name="pais"></field>
+                <field name="description"></field>
+                <field name="datetime1"></field>
+                <field name="datetime2"></field>
+                <field name="pickup_location"></field>
+                <field name="department_id"></field>
+                <field name="driver_id"></field>
+                <field name="cantidad_pasajeros"></field>
+            </tree>
+        </field>
+    </record>
+</odoo>
